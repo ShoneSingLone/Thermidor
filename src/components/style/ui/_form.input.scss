@@ -1,0 +1,38 @@
+.input-wrapper {
+    padding: 1px 5px;
+    min-width: 48px;
+    line-height: 30px;
+    // 若要修改高度，只能修改line-height才能保证处置居中 font-size: 12px;
+    color: $color;
+    vertical-align: middle;
+    border: 1px solid lighten($color, 0.1);
+    border-radius: 4px;
+    transition: border .5s;
+
+    &:placeholder {
+        color: rgb(153, 149, 149);
+    }
+
+    &:hover {
+        border: 1px solid darken($color, 0.9);
+    }
+
+    &.focus {
+        border: 1px solid $bg-color;
+    }
+
+    .input {
+        display: inline-block;
+        width: 100%;
+        border: unset;
+        outline: unset;
+        font-size: inherit;
+        color: inherit;
+        text-align: left;
+
+        &:placeholder {
+            color: inherit;
+        }
+    }
+
+}

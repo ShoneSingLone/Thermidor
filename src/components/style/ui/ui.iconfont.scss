@@ -1,0 +1,585 @@
+/** 图标字体 **/
+@font-face {
+  font-family: 'layui-icon';
+  src: url('../font/iconfont.eot?v=220');
+  src: url('../font/iconfont.eot?v=220#iefix') format('embedded-opentype'),
+    url('../font/iconfont.svg?v=220#iconfont') format('svg'),
+    url('../font/iconfont.woff?v=220') format('woff'),
+    url('../font/iconfont.ttf?v=220') format('truetype');
+}
+
+.layui-icon {
+  font-family: "layui-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &-duihua:before {
+    content: "\e611";
+  }
+
+  &-shezhi:before {
+    content: "\e614";
+  }
+
+  &-yinshenim:before {
+    content: "\e60f";
+  }
+
+  &-search:before {
+    content: "\e615";
+  }
+
+  &-fenxiang1:before {
+    content: "\e641";
+  }
+
+  &-shezhi1:before {
+    content: "\e620";
+  }
+
+  &-yinqing:before {
+    content: "\e628";
+  }
+
+  &-yuejuancuohao:before {
+    content: "\1006";
+  }
+
+  &-cuo:before {
+    content: "\1007";
+  }
+
+  &-baobiao:before {
+    content: "\e629";
+  }
+
+  &-star:before {
+    content: "\e600";
+  }
+
+  &-yuandian:before {
+    content: "\e617";
+  }
+
+  &-chat:before {
+    content: "\e606";
+  }
+
+  &-logo:before {
+    content: "\e609";
+  }
+
+  &-list:before {
+    content: "\e60a";
+  }
+
+  &-tubiao:before {
+    content: "\e62c";
+  }
+
+  &-right:before {
+    content: "\1005";
+  }
+
+  &-huanfu2:before {
+    content: "\e61b";
+  }
+
+  &-On-line:before {
+    content: "\e610";
+  }
+
+  &-biaoge:before {
+    content: "\e62d";
+  }
+
+  &-youyou:before {
+    content: "\e602";
+  }
+
+  &-zuozuo:before {
+    content: "\e603";
+  }
+
+  &-cart-simple:before {
+    content: "\e698";
+  }
+
+  &-cry:before {
+    content: "\e69c";
+  }
+
+  &-smile:before {
+    content: "\e6af";
+  }
+
+  &-survey:before {
+    content: "\e6b2";
+  }
+
+  &-tree:before {
+    content: "\e62e";
+  }
+
+  &-iconfont17:before {
+    content: "\e62f";
+  }
+
+  &-tianjia:before {
+    content: "\e61f";
+  }
+
+  &-xiazai:before {
+    content: "\e601";
+  }
+
+  &-xuanzemoban48:before {
+    content: "\e630";
+  }
+
+  &-gongju:before {
+    content: "\e631";
+  }
+
+  &-face-surprised:before {
+    content: "\e664";
+  }
+
+  &-bianji:before {
+    content: "\e642";
+  }
+
+  &-speaker:before {
+    content: "\e645";
+  }
+
+  &-xiangxia:before {
+    content: "\e61a";
+  }
+
+  &-wenjian:before {
+    content: "\e621";
+  }
+
+  &-layouts:before {
+    content: "\e632";
+  }
+
+  &-duigou:before {
+    content: "\e618";
+  }
+
+  &-tianjia1:before {
+    content: "\e608";
+  }
+
+  &-yaoyaozhibofanye:before {
+    content: "\e633";
+  }
+
+  &-read:before {
+    content: "\e705";
+  }
+
+  &-404:before {
+    content: "\e61c";
+  }
+
+  &-lunbozutu:before {
+    content: "\e634";
+  }
+
+  &-help:before {
+    content: "\e607";
+  }
+
+  &-daima1:before {
+    content: "\e635";
+  }
+
+  &-jinshui:before {
+    content: "\e636";
+  }
+
+  &-find-fill:before {
+    content: "\e670";
+  }
+
+  &-about:before {
+    content: "\e60b";
+  }
+
+  &-location:before {
+    content: "\e715";
+  }
+
+  &-xiangshang:before {
+    content: "\e619";
+  }
+
+  &-pause:before {
+    content: "\e651";
+  }
+
+  &-riqi:before {
+    content: "\e637";
+  }
+
+  &-uploadfile:before {
+    content: "\e61d";
+  }
+
+  &-delete:before {
+    content: "\e640";
+  }
+
+  &-play:before {
+    content: "\e652";
+  }
+
+  &-top:before {
+    content: "\e604";
+  }
+
+  &-haoyouqingqiu:before {
+    content: "\e612";
+  }
+
+  &-weibiaoti1:before {
+    content: "\e605";
+  }
+
+  &-chuangkou:before {
+    content: "\e638";
+  }
+
+  &-comiisbiaoqing:before {
+    content: "\e60c";
+  }
+
+  &-zhengque:before {
+    content: "\e616";
+  }
+
+  &-dollar:before {
+    content: "\e659";
+  }
+
+  &-iconfontwodehaoyou:before {
+    content: "\e613";
+  }
+
+  &-wenjianxiazai:before {
+    content: "\e61e";
+  }
+
+  &-tupian:before {
+    content: "\e60d";
+  }
+
+  &-lianjie:before {
+    content: "\e64c";
+  }
+
+  &-diamond:before {
+    content: "\e735";
+  }
+
+  &-jilu:before {
+    content: "\e60e";
+  }
+
+  &-liucheng:before {
+    content: "\e622";
+  }
+
+  &-fontstrikethrough:before {
+    content: "\e64f";
+  }
+
+  &-unlink:before {
+    content: "\e64d";
+  }
+
+  &-bianjiwenzi:before {
+    content: "\e639";
+  }
+
+  &-sanjiao:before {
+    content: "\e623";
+  }
+
+  &-danxuankuanghouxuan:before {
+    content: "\e63f";
+  }
+
+  &-danxuankuangxuanzhong:before {
+    content: "\e643";
+  }
+
+  &-juzhongduiqi:before {
+    content: "\e647";
+  }
+
+  &-youduiqi:before {
+    content: "\e648";
+  }
+
+  &-zuoduiqi:before {
+    content: "\e649";
+  }
+
+  &-gongsisvgtubiaozongji22:before {
+    content: "\e626";
+  }
+
+  &-gongsisvgtubiaozongji23:before {
+    content: "\e627";
+  }
+
+  &-refresh-2:before {
+    content: "\1002";
+  }
+
+  &-loading-1:before {
+    content: "\e63e";
+  }
+
+  &-return:before {
+    content: "\e65c";
+  }
+
+  &-jiacu:before {
+    content: "\e62b";
+  }
+
+  &-uploading:before {
+    content: "\e67c";
+  }
+
+  &-liaotianduihuaimgoutong:before {
+    content: "\e63a";
+  }
+
+  &-video:before {
+    content: "\e6ed";
+  }
+
+  &-headset:before {
+    content: "\e6fc";
+  }
+
+  &-wenjianjiafan:before {
+    content: "\e624";
+  }
+
+  &-shouji:before {
+    content: "\e63b";
+  }
+
+  &-tianjia2:before {
+    content: "\e654";
+  }
+
+  &-wenjianjia:before {
+    content: "\e7a0";
+  }
+
+  &-biaoqing:before {
+    content: "\e650";
+  }
+
+  &-html:before {
+    content: "\e64b";
+  }
+
+  &-biaodan:before {
+    content: "\e63c";
+  }
+
+  &-cart:before {
+    content: "\e657";
+  }
+
+  &-camera-fill:before {
+    content: "\e65d";
+  }
+
+  &-25:before {
+    content: "\e62a";
+  }
+
+  &-emwdaima:before {
+    content: "\e64e";
+  }
+
+  &-fire:before {
+    content: "\e756";
+  }
+
+  &-set:before {
+    content: "\e716";
+  }
+
+  &-zitixiahuaxian:before {
+    content: "\e646";
+  }
+
+  &-sanjiao1:before {
+    content: "\e625";
+  }
+
+  &-tips:before {
+    content: "\e702";
+  }
+
+  &-tupian-copy-copy:before {
+    content: "\e64a";
+  }
+
+  &-more-vertical:before {
+    content: "\e671";
+  }
+
+  &-zhuti2:before {
+    content: "\e66c";
+  }
+
+  &-loading:before {
+    content: "\e63d";
+  }
+
+  &-xieti:before {
+    content: "\e644";
+  }
+
+  &-refresh-1:before {
+    content: "\e666";
+  }
+
+  &-rmb:before {
+    content: "\e65e";
+  }
+
+  &-home:before {
+    content: "\e68e";
+  }
+
+  &-user:before {
+    content: "\e770";
+  }
+
+  &-notice:before {
+    content: "\e667";
+  }
+
+  &-voice:before {
+    content: "\e688";
+  }
+
+  &-download:before {
+    content: "\e681";
+  }
+
+  &-snowflake:before {
+    content: "\e6b1";
+  }
+
+  &-yemian1:before {
+    content: "\e655";
+  }
+
+  &-template:before {
+    content: "\e663";
+  }
+
+  &-auz:before {
+    content: "\e672";
+  }
+
+  &-console:before {
+    content: "\e665";
+  }
+
+  &-app:before {
+    content: "\e653";
+  }
+
+  &-xiayiye:before {
+    content: "\e65a";
+  }
+
+  &-website:before {
+    content: "\e7ae";
+  }
+
+  &-xiayiye1:before {
+    content: "\e65b";
+  }
+
+  &-component:before {
+    content: "\e857";
+  }
+
+  &-more:before {
+    content: "\e65f";
+  }
+
+  &-shrink-right:before {
+    content: "\e668";
+  }
+
+  &-spread-left:before {
+    content: "\e66b";
+  }
+
+  &-camera:before {
+    content: "\e660";
+  }
+
+  &-note:before {
+    content: "\e66e";
+  }
+
+  &-refresh:before {
+    content: "\e669";
+  }
+
+  &-nv:before {
+    content: "\e661";
+  }
+
+  &-nan:before {
+    content: "\e662";
+  }
+
+  &-senior:before {
+    content: "\e674";
+  }
+
+  &-theme:before {
+    content: "\e66a";
+  }
+
+  &-tread:before {
+    content: "\e6c5";
+  }
+
+  &-praise:before {
+    content: "\e6c6";
+  }
+
+  &-star-fill:before {
+    content: "\e658";
+  }
+
+  &-template-1:before {
+    content: "\e656";
+  }
+
+  &-loading-2:before {
+    content: "\e66d";
+  }
+}
