@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-Vue.use(Router)
 
-export default new Router({
+Vue.use(Router);
+
+let router = {
   routes: [{
       path: '/',
       name: 'home',
@@ -28,6 +29,12 @@ export default new Router({
         import( /* webpackChunkName: "scrollBar" */ './views/ScrollBar.vue')
     },
     {
+      path: '/layer',
+      name: 'layer',
+      component: () =>
+        import( /* webpackChunkName: "layer" */ './views/layer/layer.vue')
+    },
+    {
       path: '/form',
       name: 'form',
       component: () =>
@@ -40,4 +47,8 @@ export default new Router({
       }]
     }
   ]
-})
+};
+export default new Router(router);
+export {
+  router
+};

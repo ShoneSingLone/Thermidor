@@ -1,0 +1,14 @@
+.c-layer {
+    position: fixed;
+    // transition: all 0.1s;
+    // outline: 2px solid rebeccapurple;
+    @include elevation2();
+
+    .iframe {
+        z-index: 1;
+        width: 375px;
+        height: 500px;
+        top: 0;
+        left: 0;
+    }
+}

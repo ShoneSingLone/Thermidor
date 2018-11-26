@@ -1,21 +1,7 @@
 <template>
   <div id="app">
-    <ul class="nav horizontal" ref="app">
-      <li class="item">
-        <router-link to="/">Home</router-link>
-      </li>
-      <li class="item">
-        <router-link to="/about">About</router-link>
-      </li>
-      <li class="item">
-        <router-link to="/drag">Drag</router-link>
-      </li>
-      <li class="item">
-        <router-link to="/scrollBar">scrollBar</router-link>
-      </li>
-      <li class="item">
-        <router-link to="/form">form</router-link>
-      </li>
+    <ul class="nav " ref="app">
+      <c-tree-route class="item" :treeData="routeTreeData" @clickItem="handleClickItem"> </c-tree-route>
     </ul>
     <transition name="fade-cross">
       <router-view></router-view>
@@ -28,6 +14,63 @@ export default {
   mounted() {
     window.app = this.$refs.app;
     console.log("App");
+  },
+  data() {
+    return {
+      routeTreeData: {
+        name: "My Tree",
+        children: [
+          {
+            name: "hello"
+          },
+          {
+            name: "wat"
+          },
+          {
+            name: "child folder",
+            children: [
+              {
+                name: "child folder",
+                children: [
+                  {
+                    name: "hello"
+                  },
+                  {
+                    name: "wat"
+                  }
+                ]
+              },
+              {
+                name: "hello"
+              },
+              {
+                name: "wat"
+              },
+              {
+                name: "child folder",
+                children: [
+                  {
+                    name: "hello"
+                  },
+                  {
+                    name: "wat"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    };
+  },
+  methods: {
+    handleClickItem(item) {
+      console.log("Item", item);
+    }
+  },
+  components: {
+    CTreeRoute: () =>
+      import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue")
   }
 };
 </script>
@@ -42,12 +85,13 @@ body,
 }
 #app {
   .nav {
+    position: fixed;
     padding: 30px;
     a {
       font-weight: bold;
       color: #2c3e50;
       &.router-link-exact-active {
-        color: #42b983;
+        color: #2c3e50;
       }
     }
     &.horizontal {
