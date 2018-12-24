@@ -17,6 +17,12 @@ let router = {
         import( /* webpackChunkName: "about" */ './views/About.vue')
     },
     {
+      path: '/button',
+      name: 'button',
+      component: () =>
+        import( /* webpackChunkName: "about" */ './views/Button.vue')
+    },
+    {
       path: '/drag',
       name: 'drag',
       component: () =>

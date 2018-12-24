@@ -4,22 +4,21 @@
  *
  */
 
-
 export default {
     on(domNode, event, callBackFunction, opts) {
         domNode.namespaces = domNode.namespaces || {};
-        console.log(domNode.namespaces);
+        // console.log(domNode.namespaces);
         domNode.namespaces[event] = callBackFunction;
         var options = opts || false;
-
         domNode.addEventListener(event.split('.')[0], callBackFunction, options);
         return domNode;
     },
     off(domNode, event) {
-        console.log("off", event);
+        // console.log("off", event);
+        // domNode.namespaces[event] = null;
         domNode.removeEventListener(event.split('.')[0], domNode.namespaces[event]);
-        delete domNode.namespaces[event];
-        console.log(domNode.namespaces);
+        // delete domNode.namespaces[event];
+        // console.log(domNode.namespaces);
         return domNode;
     }
 }

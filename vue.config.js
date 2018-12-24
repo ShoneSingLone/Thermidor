@@ -3,6 +3,7 @@ const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+
 // process.env.NODE_ENV: base or common
 
 let plugins = [],
@@ -42,6 +43,8 @@ module.exports = {
       alias: {
         '@c': resolve('./src/components'),
         '@u': resolve('./src/utils'),
+        '@s': resolve('./sourcecode'),
+        // /element-ui/packages/alert
       }
     },
   },

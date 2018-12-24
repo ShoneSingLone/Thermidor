@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import 'reset-css';
-import '@c/style/ui/ui.scss'
+import '@c/style/ui/u.iscss'
 
 Vue.config.productionTip = false
 

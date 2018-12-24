@@ -1,13 +1,19 @@
 <template>
   <transition :name="transitionName">
     <ul>
-      <li class="tree" v-for="(treeData,index) in treeList" :key="index">
-        <div :class="{bold: isFolder(treeData)}" @click="toggle(treeData)">
+      <li
+        class="tree"
+        v-for="(treeData,index) in treeList"
+        :key="index"
+      >
+        <div
+          :class="{bold: isFolder(treeData)}"
+          @click="toggle(treeData)"
+        >
           {{treeData.name}}
           <span v-if="isFolder(treeData)">[{{isOpen ? '-' : '+'}}]</span>
         </div>
-        <c-tree-route class="item" :treeList="treeData" v-show="isOpen" v-if="isFolder(treeData)">
-        </c-tree-route>
+ 
       </li>
     </ul>
   </transition>
@@ -16,6 +22,7 @@
 <script>
 // import { mapGetters, mapActions } from "vuex";
 import { router } from "@/router.js";
+
 console.log(router.routes);
 export default {
   name: "TreeRoute",

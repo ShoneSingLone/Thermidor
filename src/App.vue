@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <ul class="nav " ref="app">
-      <c-tree-route class="item" :treeData="routeTreeData" @clickItem="handleClickItem"> </c-tree-route>
+    <c-button>button</c-button>
+    <ul class="nav" ref="app">
+      <c-tree-route class="item" :treeData="routeTreeData" @clickItem="handleClickItem"></c-tree-route>
     </ul>
     <transition name="fade-cross">
       <router-view></router-view>
@@ -9,6 +10,7 @@
   </div>
 </template>
 <script>
+import routeObj from "./router.js";
 export default {
   name: "App",
   mounted() {
@@ -19,58 +21,20 @@ export default {
     return {
       routeTreeData: {
         name: "My Tree",
-        children: [
-          {
-            name: "hello"
-          },
-          {
-            name: "wat"
-          },
-          {
-            name: "child folder",
-            children: [
-              {
-                name: "child folder",
-                children: [
-                  {
-                    name: "hello"
-                  },
-                  {
-                    name: "wat"
-                  }
-                ]
-              },
-              {
-                name: "hello"
-              },
-              {
-                name: "wat"
-              },
-              {
-                name: "child folder",
-                children: [
-                  {
-                    name: "hello"
-                  },
-                  {
-                    name: "wat"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        children: routeObj.options.routes
       }
     };
   },
   methods: {
     handleClickItem(item) {
-      console.log("Item", item);
+      this.$router.push({ name: item.name, query: { userId: 123 } });
     }
   },
   components: {
     CTreeRoute: () =>
-      import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue")
+      import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue"),
+    CButton: () =>
+      import(/* webpackChunkName: "TreeRout" */ "@s/element-ui/packages/button")
   }
 };
 </script>

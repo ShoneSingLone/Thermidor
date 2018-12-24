@@ -1,26 +1,12 @@
-# layui
+# Tree
 
-## Project setup
-```
-npm install
-```
+>[ 树形菜单文档 - layui.tree](https://www.layui.com/doc/modules/tree.html)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+涉及到[Vue递归](https://cn.vuejs.org/v2/guide/components-edge-cases.html#%E9%80%92%E5%BD%92%E7%BB%84%E4%BB%B6)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
+```js
+//在本地注册组件的时候，你可以使用 webpack 的异步 import：
+components: {
+  TreeFolderContents: () => import('./tree-folder-contents.vue')
+}
 ```
