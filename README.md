@@ -2,9 +2,15 @@
 
 [Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca/section/5bc844a45188255c60044ef4#heading-1)
 
-## 组件间的通信 
+## Vue 基础
 
-$emit， $on， $off ref 和 $parent / $children
+- [inheritAttrs](https://cn.vuejs.org/v2/api/#inheritAttrs)
+- [slot](https://cn.vuejs.org/v2/guide/components-slots.html)
+
+## 组件间的通信
+
+### $emit， $on， $off ref 和 $parent / $children
+
 [Vue 组件通信之 Bus](https://juejin.im/post/5a4353766fb9a044fb080927)
 >关键是bus需要在销毁之前清除监听
 
@@ -27,13 +33,17 @@ beforeDestroy () {
 },
 ```
 
+### 非得要用Vuex实现组件之间的传值？
+
 [provide-inject](https://cn.vuejs.org/v2/api/#provide-inject)
+>从根组件传递，只要存在上下游关系，就可以完成通信，相当于（伪）全局变量。 this.$root只能访问根实例，相比provide-inject不够灵活。Vuex毕竟是状态管理第三方库，对于独立组件开发，只是需要组件间通信，还要依赖一个库，是不是就太...emmm...
+
+[mixins](https://cn.vuejs.org/v2/api/#provide-inject)
+将不同的逻辑分到不同的js，比如 queryPanel（查询列表业务组件，需要queryClick查询，dblClick选择查询的行，返回行数据...都是queryPanel相关的操作）
 
 ## main
-
   props slot event 
-  编写components就是面向接口编程，是对“是什么，就能做什么”的抽象。
-
+  编写components就是面向接口编程，是对“是什么，就能做什么”的抽象。比如Button：样式大小innerHTML
 ## Components
 
 ### Tree
@@ -49,7 +59,3 @@ components: {
 ```
 
 ### Button
-
-- [inheritAttrs](https://cn.vuejs.org/v2/api/#inheritAttrs)
-- [slot](https://cn.vuejs.org/v2/guide/components-slots.html)
-
