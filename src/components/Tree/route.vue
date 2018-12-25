@@ -1,19 +1,12 @@
 <template>
   <transition :name="transitionName">
     <ul>
-      <li
-        class="tree"
-        v-for="(treeData,index) in treeList"
-        :key="index"
-      >
-        <div
-          :class="{bold: isFolder(treeData)}"
-          @click="toggle(treeData)"
-        >
+      <li class="tree" v-for="(treeData,index) in treeList" :key="index">
+        <div :class="{bold: isFolder(treeData)}" @click="toggle(treeData)">
           {{treeData.name}}
           <span v-if="isFolder(treeData)">[{{isOpen ? '-' : '+'}}]</span>
+          <!-- <c-tree-route v-if="isFolder(treeData)"></c-tree-route> -->
         </div>
- 
       </li>
     </ul>
   </transition>

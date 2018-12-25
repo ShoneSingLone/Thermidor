@@ -39,8 +39,17 @@ let router = {
       name: 'layer',
       component: () =>
         import( /* webpackChunkName: "layer" */ './views/layer/layer.vue')
-    },
-    {
+    }, {
+      path: '/CanvasGame',
+      name: 'CanvasGame',
+      component: () =>
+        import( /* webpackChunkName: "CanvasGame" */ './views/CanvasGame.vue')
+    }, {
+      path: '/form2',
+      name: 'form2',
+      component: () =>
+        import( /* webpackChunkName: "CanvasGame" */ './views/Form/form.vue')
+    }, {
       path: '/form',
       name: 'form',
       component: () =>

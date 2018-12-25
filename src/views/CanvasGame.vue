@@ -8,7 +8,7 @@
 // import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Drag",
+  name: "CanvasGame",
   mounted() {},
   props: {},
   data() {

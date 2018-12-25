@@ -1,53 +1,32 @@
 <template>
-    <transition name="fade-cross">
-        <div class="form">
-            <c-input :placeholder="'input-输入'" v-model="currentInput"></c-input>
-            <c-select v-model="currentSelect"></c-select>
-            <router-view></router-view>
-        </div>
-    </transition>
+  <form>
+    <slot></slot>
+  </form>
 </template>
-
 <script>
 export default {
-  name: "cForm",
-  props: {},
-  data() {
-    return {
-      currentSelect: "",
-      currentInput: ""
-    };
-  },
-  computed: {},
-  methods: {},
-  watch: {
-    currentSelect(value) {
-      console.log(value);
+  name: "CForm",
+  props: {
+    model: {
+      type: Object
     },
-    currentInput(value) {
-      console.log(value);
+    rules: {
+      type: Object
     }
   },
-  components: {
-    "c-input": () =>
-      import(/* webpackChunkName: "form.input" */ "@c/Form/Input/Input.vue"),
-    "c-select": () =>
-      import(/* webpackChunkName: "form.select" */ "@c/Form/Select/Select.vue")
+  provide() {
+    return {
+      formInject: this
+    };
+  },
+  created() {
+    this.$on("onFormItemAdd", field => {
+      if (field) this.fields.push(field);
+    });
+    this.$on("onFormItemRemove", field => {
+      /* 有prop才需要验证，才会缓存 */
+      if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
+    });
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.form {
-  margin: 0 auto;
-  width: 666px;
-  height: 40px;
-  text-align: center;
-  &:first-child() {
-    margin: 10px;
-  }
-  .input {
-    width: 100%;
-  }
-}
-</style>

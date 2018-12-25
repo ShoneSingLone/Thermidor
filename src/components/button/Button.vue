@@ -1,12 +1,14 @@
 <template>
-  <button :class="'c-button_' + size" :disabled="disabled"></button>
+  <button :class="'c-button_' + size" :disabled="disabled">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
-import { isOneOfList } from "@c/utils/is.js";
+import { isOneOfList } from "@/utils/is.js";
 
 export default {
-  name: "Button",
+  name: "CButton",
   mounted() {},
   props: {
     size: {

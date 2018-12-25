@@ -1,21 +1,35 @@
 <template>
-  <div :class="{'input-wrapper':true,'focus':isFocus}">
-    <input class="input" type="text" :placeholder="placeholder" v-model="currentValue" @focus="handleFocus" @blur="handleBlur">
+  <div :class="{'c-input-wrapper':true,'focus':isFocus}">
+    <input
+      class="c-input"
+      type="text"
+      v-model="currentValue"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      :placeholder="placeholder"
+    >
   </div>
 </template>
 
 <script>
+import Emitter from "@/utils/mixins/emitter.js";
+
 // import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "cInput",
+  name: "CInput",
+  mixins: [Emitter],
+  model: {},
   props: {
     placeholder: {
       default: "请输入"
+    },
+    value: {
+      type: String,
+      default: ""
     }
   },
   data() {
     return {
-      currentValue: "",
       isFocus: false
     };
   },
@@ -25,12 +39,15 @@ export default {
       this.isFocus = true;
     },
     handleBlur() {
+      this.dispatch("CFormItem", "onFormBlur", this.currentValue);
       this.isFocus = false;
     }
   },
   watch: {
-    currentValue(value) {
-      this.$emit("input", value);
+    value(newValue) {
+      console.log(newValue);
+      this.dispatch("CFormItem", "onFormChange", newValue);
+      this.$emit("input", newValue);
     }
   },
   components: {}

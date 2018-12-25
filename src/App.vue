@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <c-button>button</c-button>
+    <!-- <c-button>button</c-button> -->
     <ul class="nav" ref="app">
       <c-tree-route class="item" :treeData="routeTreeData" @clickItem="handleClickItem"></c-tree-route>
     </ul>
@@ -31,10 +31,7 @@ export default {
     }
   },
   components: {
-    CTreeRoute: () =>
-      import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue"),
-    CButton: () =>
-      import(/* webpackChunkName: "TreeRout" */ "@s/element-ui/packages/button")
+    CTreeRoute: () => import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue"),
   }
 };
 </script>
