@@ -1,58 +1,45 @@
 <template>
-  <div :class="{'c-input-wrapper':true,'focus':isFocus}">
-    <input
-      class="c-input"
-      type="text"
-      v-model="currentValue"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      :placeholder="placeholder"
-    >
-  </div>
+  <input
+    type="text"
+    :value="value"
+    :placeholder="placeholder"
+    @input="handleInput"
+    @blur="handleBlur"
+  >
 </template>
-
 <script>
 import Emitter from "@/utils/mixins/emitter.js";
-
-// import { mapGetters, mapActions } from "vuex";
+/* Vue推荐只有数据的所有者才能修改数据 */
 export default {
   name: "CInput",
   mixins: [Emitter],
-  model: {},
   props: {
-    placeholder: {
-      default: "请输入"
-    },
     value: {
       type: String,
       default: ""
+    },
+    options: {
+      type: Object
     }
   },
   data() {
-    return {
-      isFocus: false
-    };
+    return {};
   },
-  computed: {},
+  watch: {},
   methods: {
-    handleFocus() {
-      this.isFocus = true;
+    handleInput(event) {
+      const value = event.target.value;
+      this.$emit("input", value);
+      this.dispatch("CFormItem", "onFormChange", value);
     },
     handleBlur() {
-      this.dispatch("CFormItem", "onFormBlur", this.currentValue);
-      this.isFocus = false;
+      this.dispatch("CFormItem", "onFormBlur", this.value);
     }
   },
-  watch: {
-    value(newValue) {
-      console.log(newValue);
-      this.dispatch("CFormItem", "onFormChange", newValue);
-      this.$emit("input", newValue);
+  computed: {
+    placeholder() {
+      return (this.options && this.options.placeholder) || "请输入";
     }
-  },
-  components: {}
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -9,6 +9,7 @@
           <c-input v-model="formValidate.mail"></c-input>
         </c-form-item>
       </c-form>
+      {{formValidate}}
     </div>
   </transition>
 </template>
