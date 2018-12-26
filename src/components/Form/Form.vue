@@ -19,6 +19,7 @@ export default {
       formInject: this
     };
   },
+  /* 因为Vue渲染是由内而外，所以在mounted才监听是无法满足需求 */
   created() {
     this.$on("onFormItemAdd", field => {
       if (field) this.fields.push(field);
