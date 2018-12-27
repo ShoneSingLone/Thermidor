@@ -24,6 +24,11 @@ import AsyncValidator from "async-validator";
 export default {
   name: "CFormItem",
   mixins: [Emitter],
+  provide() {
+    return {
+      formItemInject: this
+    };
+  },
   inject: ["formInject"],
   created() {
     /* 如果没有传入 prop，则无需校验，也就无需缓存 */
@@ -49,15 +54,14 @@ export default {
     return {
       validateState: "", // 校验状态
       validateMessage: "", // 校验不通过时的提示信息
-      initialValue: "",
-      isRequired: true //是否为必填
+      initialValue: ""
     };
   },
   methods: {
     watchItem() {
       // debugger;
-      this.$on("onFieldBlur", this.onFieldBlur);
-      this.$on("onFieldChange", this.onFieldChange);
+      this.$on("onFieldBlurValidate", this.onFieldBlurValidate);
+      this.$on("onFieldChangeValidate", this.onFieldChangeValidate);
     },
     // 从 Form 的 rules 属性中，获取当前 FormItem 的校验规则
     getRules() {
@@ -100,12 +104,12 @@ export default {
         callback(this.validateMessage);
       });
     },
-    onFieldBlur(event) {
-      console.log("FormItem onFieldBlur", event);
+    onFieldBlurValidate(value) {
+      console.log("FormItem onFieldBlurValidate", value);
       this.validate("blur");
     },
-    onFieldChange(event) {
-      console.log("FormItem onFieldChange", event);
+    onFieldChangeValidate(value) {
+      console.log("FormItem onFieldChangeValidate", value);
       this.validate("change");
     },
     // 重置数据
@@ -119,6 +123,9 @@ export default {
     // 从 Form 的 model 中动态得到当前表单组件的数据
     fieldValue() {
       return this.formInject.model[this.prop];
+    },
+    isRequired() {
+      return this.getRules().filter(rule => !!rule.required).length > 0;
     }
   },
   /* 组件销毁前，将实例从 Form 的缓存中移除 */

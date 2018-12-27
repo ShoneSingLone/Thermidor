@@ -31,12 +31,12 @@ export default {
       const value = event.target.value;
       console.log("handleInput", value);
       this.$emit("input", value);
-      this.dispatch("CFormItem", "onFieldChange", value);
+      this.dispatch("CFormItem", "onFieldChangeValidate", value);
     },
     handleBlur(event) {
       const value = event.target.value;
       console.log("handleBlur", value);
-      this.dispatch("CFormItem", "onFieldBlur", value);
+      this.dispatch("CFormItem", "onFieldBlurValidate", value);
     }
   },
   computed: {

@@ -251,10 +251,10 @@
           }
         }).map(rule => objectAssign({}, rule));
       },
-      onFieldBlur() {
+      onFieldBlurValidate() {
         this.validate('blur');
       },
-      onFieldChange() {
+      onFieldChangeValidate() {
         if (this.validateDisabled) {
           this.validateDisabled = false;
           return;
@@ -278,8 +278,8 @@
         let rules = this.getRules();
 
         if (rules.length || this.required !== undefined) {
-          this.$on('el.form.blur', this.onFieldBlur);
-          this.$on('el.form.change', this.onFieldChange);
+          this.$on('el.form.blur', this.onFieldBlurValidate);
+          this.$on('el.form.change', this.onFieldChangeValidate);
         }
       }
     },

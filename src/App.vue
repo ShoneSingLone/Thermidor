@@ -31,7 +31,8 @@ export default {
     }
   },
   components: {
-    CTreeRoute: () => import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue"),
+    CTreeRoute: () =>
+      import(/* webpackChunkName: "TreeRout" */ "@c/Tree/route.vue")
   }
 };
 </script>
@@ -48,6 +49,7 @@ body,
   .nav {
     position: fixed;
     padding: 30px;
+    z-index: 1;
     a {
       font-weight: bold;
       color: #2c3e50;
