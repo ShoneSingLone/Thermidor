@@ -1,6 +1,6 @@
 function broadcast(componentName, eventName, params) {
   this.$children.forEach(child => {
-    var name = child.$options.componentName;
+    const name = child.$options.name;
 
     if (name === componentName) {
       child.$emit.apply(child, [eventName].concat(params));
@@ -12,15 +12,16 @@ function broadcast(componentName, eventName, params) {
 export default {
   methods: {
     /* 向上分发需要while parent */
+
     dispatch(componentName, eventName, params) {
-      var parent = this.$parent || this.$root;
-      var name = parent.$options.componentName;
+      let parent = this.$parent || this.$root;
+      let name = parent.$options.name;
 
       while (parent && (!name || name !== componentName)) {
         parent = parent.$parent;
 
         if (parent) {
-          name = parent.$options.componentName;
+          name = parent.$options.name;
         }
       }
       if (parent) {
@@ -28,6 +29,7 @@ export default {
       }
     },
     /* 向下广播需要递归每一个child */
+
     broadcast(componentName, eventName, params) {
       broadcast.call(this, componentName, eventName, params);
     }

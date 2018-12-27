@@ -1,7 +1,7 @@
 <template>
   <transition :name="'transitionName'">
     <div id="view-form">
-      <c-form :model="formValidate" :rules="ruleValidate">
+      <c-form :model="formValidate" :rules="ruleValidate" ref="form">
         <c-form-item label="用户名" prop="name">
           <c-input v-model="formValidate.name"></c-input>
         </c-form-item>
@@ -10,6 +10,10 @@
         </c-form-item>
       </c-form>
       {{formValidate}}
+      <div class="operator">
+        <button @click="handleSubmit">提交</button>
+        <button @click="handleReset">重置</button>
+      </div>
     </div>
   </transition>
 </template>
@@ -47,7 +51,21 @@ export default {
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    handleSubmit() {
+      this.$refs.form
+        .validate()
+        .then(success => {
+          console.log(success);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    handleReset() {
+      this.$refs.form.resetformItems();
+    }
+  },
   components: {
     CForm: () => import(/* webpackChunkName: "Form" */ "@c/Form/Form.vue"),
     CFormItem: () =>

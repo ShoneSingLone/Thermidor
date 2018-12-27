@@ -1,10 +1,13 @@
 <template>
   <div class="c-form-item">
     <div class="label-wrapper">
-      <label v-if="label">{{ label }}</label>
+      <label v-if="label" :class="[{required:isRequired}]">{{ label }}</label>
     </div>
     <div>
       <slot></slot>
+    </div>
+    <div class="validate-message-wrapper">
+      <div v-if="validateState === 'error'" class="validate-message">{{ validateMessage }}</div>
     </div>
   </div>
 </template>
@@ -12,7 +15,7 @@
 import Emitter from "@/utils/mixins/emitter.js";
 /* 当每个 FormItem 渲染时，将其自身（this）作为参数通过 dispatch 派发到 Form 组件中，然后通过一个数组缓存起来；同理当 FormItem 销毁时，将其从 Form 缓存的数组中移除。 */
 
-/* 这个厉害了，数据验证 */
+/* 数据验证 */
 import AsyncValidator from "async-validator";
 
 /* 重置与清空 */
@@ -27,6 +30,8 @@ export default {
     if (this.prop) {
       /* 往form注册 */
       this.dispatch("CForm", "onFormItemAdd", this);
+      /* 设置初始值，以便在重置时恢复默认值 */
+      this.initialValue = this.fieldValue;
       /* 监听表单控件 */
       this.watchItem();
     }
@@ -43,13 +48,16 @@ export default {
   data() {
     return {
       validateState: "", // 校验状态
-      validateMessage: "" // 校验不通过时的提示信息
+      validateMessage: "", // 校验不通过时的提示信息
+      initialValue: "",
+      isRequired: true //是否为必填
     };
   },
   methods: {
     watchItem() {
-      this.$on("onFormBlur", this.onFieldBlur);
-      this.$on("onFormChange", this.onFieldChange);
+      // debugger;
+      this.$on("onFieldBlur", this.onFieldBlur);
+      this.$on("onFieldChange", this.onFieldChange);
     },
     // 从 Form 的 rules 属性中，获取当前 FormItem 的校验规则
     getRules() {
@@ -71,7 +79,6 @@ export default {
      */
     validate(trigger, callback = function() {}) {
       let rules = this.getFilteredRule(trigger);
-
       if (!rules || rules.length === 0) {
         return true;
       }
@@ -86,20 +93,26 @@ export default {
       let model = {};
 
       model[this.prop] = this.fieldValue;
-      
-      /* 可以改写成Promise模式 */
+
       validator.validate(model, { firstFields: true }, errors => {
         this.validateState = !errors ? "success" : "error";
         this.validateMessage = errors ? errors[0].message : "";
-
         callback(this.validateMessage);
       });
     },
-    onFieldBlur() {
+    onFieldBlur(event) {
+      console.log("FormItem onFieldBlur", event);
       this.validate("blur");
     },
-    onFieldChange() {
+    onFieldChange(event) {
+      console.log("FormItem onFieldChange", event);
       this.validate("change");
+    },
+    // 重置数据
+    resetField() {
+      this.validateState = "";
+      this.validateMessage = "";
+      this.formInject.model[this.prop] = this.initialValue;
     }
   },
   computed: {
@@ -114,3 +127,21 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.c-form-item {
+  .label-wrapper {
+    .required {
+      &::before {
+        content: "*";
+        color: red;
+      }
+    }
+  }
+  .validate-message-wrapper {
+    .validate-message {
+      color: red;
+    }
+  }
+}
+</style>
