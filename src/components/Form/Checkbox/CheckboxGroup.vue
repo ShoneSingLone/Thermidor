@@ -36,37 +36,7 @@ export default {
         return this.childrensLabels[key];
       });
       this.currentValue = arr;
-      // let vm = this;
-      // vm.childrens = findComponentsDownward(this, "CCheckbox");
-      // if (vm.childrens) {
-      //   const ACTIONS = {
-      //     set: () => {
-      //       /* set */
-      //       vm.childrens.forEach(child => {
-      //         /* 会触发事件发生吗？ */
-      //         child.currentValue = !!~value.indexOf(child.label);
-      //       });
-      //       return false;
-      //     },
-      //     update: () => {
-      //       let arr = [];
-      //       vm.childrens.forEach(child => {
-      //         let isChecked = child.currentValue;
-      //         if (isChecked) return arr.push(child.label);
-      //       });
-      //       vm.currentValue = arr;
-      //       return false;
-      //     }
-      //   };
-      //   ACTIONS[command] && ACTIONS[command]();
-      // }
-      // console.log("vm.currentValue", vm.currentValue, vm.updateValue.count++);
-      // vm.updateValue.count = vm.updateValue.count || 1;
-      // if (vm.updateValue.timer) {
-      //   clearTimeout(vm.updateValue.timer);
-      //   vm.updateValue.timer = false;
-      // }
-      // vm.updateValue.timer = setTimeout(() => {}, 48);
+      /* 子组件需要注册才能动态更改 */
     },
     change(data) {
       this.currentValue = data;
