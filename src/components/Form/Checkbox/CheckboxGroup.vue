@@ -29,9 +29,7 @@ export default {
       let vm = this;
       vm.updateValue.count = vm.updateValue.count || 1;
       if (vm.updateValue.timer) {
-        debugger;
         clearTimeout(vm.updateValue.timer);
-        vm.updateValue.count = vm.updateValue.count || 1;
         vm.updateValue.timer = false;
       }
       vm.updateValue.timer = setTimeout(() => {
@@ -52,7 +50,7 @@ export default {
           }
         }
         console.log("vm.currentValue", vm.currentValue, vm.updateValue.count++);
-      }, 1000);
+      }, 48);
     },
     change(data) {
       this.currentValue = data;
@@ -66,8 +64,8 @@ export default {
   },
   watch: {
     value() {
-      console.log("checkboxGroup value update");
-      this.updateValue(true);
+      console.log("checkboxGroup value update", Date.now());
+      // this.updateValue(true);
     },
     currentValue(newValue) {
       console.log("checkboxGroup currentValue update");
