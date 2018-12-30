@@ -66,7 +66,14 @@ export default {
         name: "",
         mail: "",
         checkboxSingle: "是",
-        checkboxMultiple: ["option1", "option2", "option3","option4","option5","option6"]
+        checkboxMultiple: [
+          "option1",
+          "option2",
+          "option3",
+          "option4",
+          "option5",
+          "option6"
+        ]
       },
       ruleValidate: {
         name: [{ required: true, message: "用户名不能为空", trigger: "blur" }],

@@ -19,38 +19,54 @@ export default {
     }
   },
   data() {
+    let currentValue = this.value;
+    let childrensLabels = {};
+    currentValue.forEach(value => {
+      childrensLabels[value] = true;
+    });
     return {
-      currentValue: this.value,
+      currentValue,
+      childrensLabels,
       childrens: []
     };
   },
   methods: {
-    updateValue(isSet) {
-      let vm = this;
-      vm.updateValue.count = vm.updateValue.count || 1;
-      if (vm.updateValue.timer) {
-        clearTimeout(vm.updateValue.timer);
-        vm.updateValue.timer = false;
-      }
-      vm.updateValue.timer = setTimeout(() => {
-        vm.childrens = findComponentsDownward(this, "CCheckbox");
-        if (vm.childrens) {
-          if (isSet) {
-            /* set */
-            vm.childrens.forEach(child => {
-              child.currentValue = !!~vm.value.indexOf(child.label);
-            });
-          } else {
-            let arr = [];
-            vm.childrens.forEach(child => {
-              let isChecked = child.currentValue;
-              if (isChecked) return arr.push(child.label);
-            });
-            vm.currentValue = arr;
-          }
-        }
-        console.log("vm.currentValue", vm.currentValue, vm.updateValue.count++);
-      }, 48);
+    updateValue() {
+      let arr = Object.keys(this.childrensLabels).filter(key => {
+        return this.childrensLabels[key];
+      });
+      this.currentValue = arr;
+      // let vm = this;
+      // vm.childrens = findComponentsDownward(this, "CCheckbox");
+      // if (vm.childrens) {
+      //   const ACTIONS = {
+      //     set: () => {
+      //       /* set */
+      //       vm.childrens.forEach(child => {
+      //         /* 会触发事件发生吗？ */
+      //         child.currentValue = !!~value.indexOf(child.label);
+      //       });
+      //       return false;
+      //     },
+      //     update: () => {
+      //       let arr = [];
+      //       vm.childrens.forEach(child => {
+      //         let isChecked = child.currentValue;
+      //         if (isChecked) return arr.push(child.label);
+      //       });
+      //       vm.currentValue = arr;
+      //       return false;
+      //     }
+      //   };
+      //   ACTIONS[command] && ACTIONS[command]();
+      // }
+      // console.log("vm.currentValue", vm.currentValue, vm.updateValue.count++);
+      // vm.updateValue.count = vm.updateValue.count || 1;
+      // if (vm.updateValue.timer) {
+      //   clearTimeout(vm.updateValue.timer);
+      //   vm.updateValue.timer = false;
+      // }
+      // vm.updateValue.timer = setTimeout(() => {}, 48);
     },
     change(data) {
       this.currentValue = data;
@@ -59,14 +75,14 @@ export default {
       this.dispatch("CFormItem", "onFieldChangeValidate", data);
     }
   },
+  created() {
+    console.log("CCheckboxGroup created", this._uid);
+    this.childrens = findComponentsDownward(this, "CCheckbox");
+  },
   mounted() {
-    this.updateValue(true);
+    console.log("CCheckboxGroup mounted", this._uid);
   },
   watch: {
-    value() {
-      console.log("checkboxGroup value update", Date.now());
-      // this.updateValue(true);
-    },
     currentValue(newValue) {
       console.log("checkboxGroup currentValue update");
       /* 如果是单个的，直接绑定在外层 */

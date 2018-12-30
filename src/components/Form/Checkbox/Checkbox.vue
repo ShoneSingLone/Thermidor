@@ -14,9 +14,17 @@ import Emitter from "@/utils/mixins/emitter.js";
 import { findComponentUpward } from "@/utils/assist.js";
 export default {
   name: "CCheckbox",
+  created() {
+    console.log("CCheckbox created", this._uid);
+  },
   mounted() {
-    this.currentValue = this.isChecked();
+    console.log("CCheckbox mounted", this._uid);
     this.isGroup = !!findComponentUpward(this, "CCheckboxGroup");
+    if (this.isGroup) {
+      this.currentValue = this.$parent.childrensLabels[this.label];
+    } else {
+      this.currentValue = Boolean(this.value === this.trueValue);
+    }
   },
   mixins: [Emitter],
   inject: ["formItemInject"],
@@ -59,15 +67,9 @@ export default {
       return (this.options && this.options.falseValue) || false;
     }
   },
-  methods: {
-    isChecked() {
-      return Boolean(this.value === this.trueValue);
-    }
-  },
+  methods: {},
   watch: {
     currentValue(checked) {
-      const value = checked ? this.trueValue : this.falseValue;
-      console.log("checkbox", checked, value);
       /* v-model默认props：value event input 如果不使用model 属性自定义
        *  model: {
        *    prop: 'value',
@@ -77,8 +79,10 @@ export default {
        **/
       if (this.isGroup) {
         /* 如果是分组，绑定在外层group */
+        this.$parent.childrensLabels[this.label] = checked;
         this.$parent.updateValue();
       } else {
+        const value = checked ? this.trueValue : this.falseValue;
         /* 如果是单个的，直接绑定在外层 */
         this.$emit("change", value);
         /* 校验工作 */
