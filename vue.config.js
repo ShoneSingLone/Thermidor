@@ -31,6 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
+  runtimeCompiler: true,
   devServer: {
     hot: true,
   },

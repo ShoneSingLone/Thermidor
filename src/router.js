@@ -45,6 +45,11 @@ let router = {
       component: () =>
         import( /* webpackChunkName: "CanvasGame" */ './views/CanvasGame.vue')
     }, {
+      path: '/display',
+      name: 'display',
+      component: () =>
+        import( /* webpackChunkName: "CanvasGame" */ './views/Display.vue')
+    }, {
       path: '/form2',
       name: 'form2',
       component: () =>

@@ -21,7 +21,7 @@
           <c-checkbox
             v-model="formValidate.checkboxSingle"
             :options="{trueValue:'是',falseValue:'否',disabled:false}"
-          >checkbox.single</c-checkbox>
+          ></c-checkbox>
         </c-form-item>
         <c-form-item label="checkbox.multiple" prop="checkboxMultiple" class="panel">
           <c-checkbox-group v-model="formValidate.checkboxMultiple">

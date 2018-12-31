@@ -18,6 +18,7 @@
 
 - [inheritAttrs](https://cn.vuejs.org/v2/api/#inheritAttrs)
 - [slot](https://cn.vuejs.org/v2/guide/components-slots.html)
+- [vm-mount](https://cn.vuejs.org/v2/api/#vm-mount)
 
 ### 
 
