@@ -39,6 +39,10 @@
         <button @click="handleSubmit">提交</button>
         <button @click="handleReset">重置</button>
       </div>
+      <div class="alert-wrapper">
+        <button @click="handleOpen1">打开提示 1</button>
+        <button @click="handleOpen2">打开提示 2</button>
+      </div>
     </div>
   </transition>
 </template>
@@ -89,6 +93,17 @@ export default {
   },
   computed: {},
   methods: {
+    handleOpen1() {
+      this.$Alert.info({
+        content: "我是提示信息 1"
+      });
+    },
+    handleOpen2() {
+      this.$Alert.info({
+        content: "我是提示信息 2",
+        duration: 3
+      });
+    },
     handleSubmit() {
       this.$refs.form
         .validate()
